@@ -1,7 +1,6 @@
 import executeMongoDBOperation from '../services/mongodb.conntector';
 import { Request, RequestHandler, Response} from 'express';
 
-
 export const getSavedCities: RequestHandler = async(req: Request, res: Response)=>{
     // TODO
 }
