@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 
-// import usersRouter from './users/users.routes';
+import usersRouter from './users/users.routes';
 
 const app: Application = express();
 
@@ -27,7 +27,7 @@ app.get('/', (req: Request, res: Response)=>{
 });
 
 // Routers
-// app.use('/', [usersRouter]);
+app.use('/', [usersRouter]);
 
 // Start the server
 app.listen(port, () => {

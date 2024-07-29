@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-const executeMongoDBOperation = async (collectionName:string, operation:string, data:any, id?:any) =>{
+const executeMongoDBOperation = async (collectionName:string, operation:string, data:any, id?:any, filter?:any) =>{
 
     await client.connect();
     const database = client.db('CitySurf');
@@ -27,7 +27,11 @@ const executeMongoDBOperation = async (collectionName:string, operation:string, 
     try{
         switch (operation) {
             case 'find':
-              return await collection.find(data).toArray();
+              if(filter){
+                return await collection.find(data, { projection: filter }).toArray();
+              }else{
+                return await collection.find(data).toArray();
+              }
             case 'insert':
               await collection.insertOne(data);
               return 'Insert successful';

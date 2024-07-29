@@ -17,7 +17,10 @@ router
     .route('/authenticateUser')
     .post(UsersController.authenticateUser)
 router
-    .route('/deleteUser/:id')
+    .route('/user/:id')
     .delete(UsersController.deleteUser);
+router
+    .route('/savedCities/:id')
+    .delete(UsersController.deleteCity);
 
 export default router;
